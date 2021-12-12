@@ -94,11 +94,12 @@ export default function CharacterCreation() {
             </select>
 
             <div className="characterEditor">
+                <div id="base"><img src={body} alt="" /></div>
                 <div id="face"><img src={face} alt="" /></div>
                 <div id="hair"><img src={hair_img} alt="" /></div>
                 <div id="beard"><img src={beard_img} alt="" /></div>
                 {/* <div id="clothing"><img src={clothing_img} alt="clothes" /></div> */}
-                <div id="base"><img src={body} alt="" /></div>
+
             </div>
         </main>
     );
