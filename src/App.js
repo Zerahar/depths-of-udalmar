@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Container, Navbar, Row, Col, Nav } from "react-bootstrap"
 
 export default function App() {
+  const storynumber = 0
   return (
     <Container className="full-container p-0" fluid>
       <Navbar className="mt-5 mb-5" id="title-bar">
@@ -9,6 +10,7 @@ export default function App() {
         <Nav>
           <Link to="/characterCreation" className="nav-item">Create a character</Link>
           <Link to="/login" className="nav-item">Login</Link>
+          <Link to={`/story/text/${storynumber}`} className="nav-item">Begin story</Link>
         </Nav>
       </Navbar>
       <Container fluid="lg" className="text-container">
