@@ -7,6 +7,7 @@ export default function Text() {
     const [textId, setTextId] = useState(params.textId)
     const [text, setText] = useState("")
     const [chapter, setChapter] = useState("")
+    const [nextType, setNextType] = useState("text")
     useEffect(() => {
         // Fetch story object
         fetch("http://localhost:8080/text/" + textId)
@@ -16,14 +17,16 @@ export default function Text() {
                 setTextId(params.textId)
                 setChapter(res.chapter)
                 setNextTextId(res.next_id)
+                setNextType(res.next_type)
             })
 
     });
+
     return (
         <main>
             <h1>{chapter}</h1>
             <p>{text}</p>
-            <Link class="btn btn-next" to={`/story/text/${nextTextId}`}>&rarr;</Link>
+            <Link class="btn btn-next" to={`/story/${nextType}/${nextTextId}`}>&rarr;</Link>
         </main>
     );
 }

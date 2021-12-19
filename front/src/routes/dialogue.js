@@ -1,22 +1,35 @@
-import { useState } from "react";
-import { Link, useQueryParam } from "react-router-dom"
+import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import placeholder from '../img/dialoguePlaceholder.jpg'
 
 export default function Dialogue() {
-    // const [nextTextId, setNextTextId] = useState(0)
-    // const [textId, setTextId] = useState(1)
-    // const [text, setText] = useState("text")
-    // const [chapter, setChapter] = useState("chapter")
-    // const chapter = useQueryParam < Chapter > ("chapter")
-    const text = "text"
-    const nextTextId = 0
+    let params = useParams();
+    console.log(params)
+    const [nextTextId, setNextTextId] = useState(null)
+    const [textId, setTextId] = useState(params.dialogueId)
+    const [text, setText] = useState("")
+    const [chapter, setChapter] = useState("")
+    const [nextType, setNextType] = useState("text")
+    useEffect(() => {
+        // Fetch story object
+        fetch("http://localhost:8080/text/" + textId)
+            .then(data => data.json())
+            .then(res => {
+                setText(res.text)
+                setTextId(params.textId)
+                setChapter(res.chapter)
+                setNextTextId(res.next_id)
+                setNextType(res.next_type)
+            })
+
+    });
     return (
         <main>
-            {/* <h1>{chapter}</h1> */}
-            <p>{text}</p>
-            <Link class="next-text-btn btn" to={{
-                pathname: "/dialogue",
-                state: { textId: nextTextId }
-            }}>	&rarr;</Link>
+            <h1>{chapter}</h1>
+            <div className="dialogue-container" style={{ backgroundImage: `url(${placeholder})` }}>
+                <div className="dialogue-content"> <p dangerouslySetInnerHTML={{ __html: text }}></p>
+                    <Link class="btn btn-next" to={`/story/${nextType}/${nextTextId}`}>&rarr;</Link>
+                </div></div>
         </main>
     );
 }
