@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Container, Navbar, Row, Col, Nav } from "react-bootstrap"
 
 export default function App() {
-  const storynumber = 0
+  const storynumber = 1
   return (
     <Container className="full-container p-0" fluid>
       <Navbar className="mt-5 mb-5" id="title-bar">
