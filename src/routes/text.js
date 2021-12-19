@@ -4,14 +4,20 @@ import { useEffect, useState } from "react";
 export default function Text() {
     let params = useParams();
     const [nextTextId, setNextTextId] = useState(null)
-    const [textId, setTextId] = useState(null)
+    const [textId, setTextId] = useState(params.textId)
     const [text, setText] = useState("")
     const [chapter, setChapter] = useState("")
     useEffect(() => {
         // Fetch story object
-        setText("This is story")
-        setChapter("This is header")
-        setNextTextId(1)
+        fetch("http://localhost:8080/text/" + textId)
+            .then(data => data.json())
+            .then(res => {
+                setText(res.text)
+                setTextId(params.textId)
+                setChapter(res.chapter)
+                setNextTextId(res.next_id)
+            })
+
     });
     return (
         <main>
