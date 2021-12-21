@@ -4,7 +4,6 @@ import placeholder from '../img/dialoguePlaceholder.jpg'
 
 export default function Dialogue() {
     let params = useParams();
-    console.log(params)
     const [nextTextId, setNextTextId] = useState(null)
     const [textId, setTextId] = useState(params.dialogueId)
     const [text, setText] = useState("")
@@ -16,7 +15,6 @@ export default function Dialogue() {
             .then(data => data.json())
             .then(res => {
                 setText(res.text)
-                setTextId(params.textId)
                 setChapter(res.chapter)
                 setNextTextId(res.next_id)
                 setNextType(res.next_type)
