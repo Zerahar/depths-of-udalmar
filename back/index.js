@@ -40,6 +40,17 @@ MongoClient.connect(url, function (err, db) {
             db.close
         })
     })
+    // Get a map
+    app.get('/map/:mapId', (req, res) => {
+        const query = { map_id: parseInt(req.params.mapId) }
+        dbo.collection('maps').findOne(query, function (err, result) {
+            if (err) throw err
+            res.send(result)
+            console.log("Fetched map ", req.params.mapId)
+            console.log(result)
+            db.close
+        })
+    })
 });
 // error handling middleware
 app.use(function (err, req, res, next) {
