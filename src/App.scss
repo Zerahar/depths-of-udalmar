@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+$border-color: rgb(167, 144, 16);
+$textarea-color: #eee2d8;
 
 a {
   color: inherit;
@@ -8,6 +10,11 @@ body {
   background-color: rgb(46, 39, 39);
   padding: 0;
   margin: 0;
+  min-height: 100vh;
+}
+
+.full-container {
+  padding: 3rem 0 0 0;
 }
 
 #title-bar {
@@ -15,24 +22,50 @@ body {
   text-align: center;
   justify-content: center;
   background-color: black;
-  color: rgb(177, 173, 158);
+  color: #eee2d8;
+  height: 150px;
+  align-content: center;
+
+  a {
+    text-decoration: none !important;
+  }
 
   .nav-title {
     font-family: 'Cinzel', serif;
     font-size: 3em;
     color: inherit;
+
+    a:hover {
+      color: inherit;
+      text-shadow: 3px $border-color;
+    }
   }
 
   .nav-item {
     margin: 0 1em;
+    font-family: 'Cinzel', serif;
+    border: 4px double $border-color;
+    border-radius: 20px;
+    background-color: black;
+
+    &:hover {
+      background-color: rgb(44, 44, 44);
+    }
   }
 }
 
-.text-container {
 
-  .row div {
-    background-color: white;
-  }
+.text-container {
+  background-color: $textarea-color;
+  border: 2px solid $border-color;
+  padding: 5px;
+}
+
+
+.inner-container {
+  padding: 3rem;
+  border: 2px solid $border-color;
+  height: 100%;
 }
 
 h1 {
@@ -43,6 +76,9 @@ h1 {
   width: 300px;
   text-align: center;
   margin-right: 2em;
+  border: 2px solid $border-color;
+  padding: 5px;
+  background-color: $textarea-color;
 }
 
 .profile-pic {
@@ -81,7 +117,7 @@ h1 {
 
 .dialogue-content {
   background-color: rgba(255, 255, 255, 0.8) !important;
-  border-top: 3px solid brown;
+  border-top: 4px double #eee2d8;
 
   p {
     background-color: transparent;
