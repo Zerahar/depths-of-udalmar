@@ -26,7 +26,7 @@ export default function Text() {
         <main>
             <h1>{chapter}</h1>
             <p>{text}</p>
-            <Link class="btn btn-next" to={`/story/${nextType}/${nextTextId}`}>&rarr;</Link>
+            <Link class="btn btn-next" to={`/story/${nextType}/${nextTextId}`}> 	<i class="fas fa-arrow-right"></i></Link>
         </main>
     );
 }

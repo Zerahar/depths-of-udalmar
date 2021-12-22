@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Row, Col } from "react-bootstrap"
 import hair_ponytail from '../img/hair_ponytail.png'
 import hair_curly from '../img/hair_curly.png'
 import beard_gunslinger from '../img/beard_gunslinger.png'
@@ -78,29 +79,38 @@ export default function CharacterCreation() {
 
     return (
         <main>
-            <h2>Character Creator</h2>
-            <p>You have selected {selectedHair} and {selectedBeard}.</p>
-            <select onChange={e => setGender(e.target.value)} >
-                <option>male</option>
-                <option>female</option>
-            </select>
-            <select onChange={e => { setSelectedHair(e.target.value); setHair() }}>
-                <option>no hair</option>
-                {hairstyles.map(style => <option value={style.name} key={style.id}>{style.name}</option>)}
-            </select>
-            <select onChange={e => { setSelectedBeard(e.target.value); setBeard() }}>
-                <option>no beard</option>
-                {beardstyles.map(style => <option value={style.name} key={style.id}>{style.name}</option>)}
-            </select>
 
-            <div className="characterEditor">
-                <div id="base"><img src={body} alt="" /></div>
-                <div id="face"><img src={face} alt="" /></div>
-                <div id="hair"><img src={hair_img} alt="" /></div>
-                <div id="beard"><img src={beard_img} alt="" /></div>
-                {/* <div id="clothing"><img src={clothing_img} alt="clothes" /></div> */}
+            <Row>
+                <Col>
+                    <h2>Character Creator</h2>
+                    <p>You have selected {selectedHair} and {selectedBeard}.</p>
+                    <select onChange={e => setGender(e.target.value)} >
+                        <option>male</option>
+                        <option>female</option>
+                    </select><br />
+                    <select onChange={e => { setSelectedHair(e.target.value); setHair() }}>
+                        <option>no hair</option>
+                        {hairstyles.map(style => <option value={style.name} key={style.id}>{style.name}</option>)}
+                    </select><br />
+                    <select onChange={e => { setSelectedBeard(e.target.value); setBeard() }}>
+                        <option>no beard</option>
+                        {beardstyles.map(style => <option value={style.name} key={style.id}>{style.name}</option>)}
+                    </select>
+                </Col><Col>
+                    <div className="characterEditor">
+                        <div id="base"><img src={body} alt="" /></div>
+                        <div id="face"><img src={face} alt="" /></div>
+                        <div id="hair"><img src={hair_img} alt="" /></div>
+                        <div id="beard"><img src={beard_img} alt="" /></div>
+                        {/* <div id="clothing"><img src={clothing_img} alt="clothes" /></div> */}
 
-            </div>
+                    </div>
+
+                </Col>
+            </Row>
+
+
+
         </main>
     );
 }

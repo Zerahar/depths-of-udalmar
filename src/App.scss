@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
 $border-color: rgb(167, 144, 16);
 $textarea-color: #eee2d8;
+$background: rgb(46, 39, 39);
+$light-brown: rgb(119, 102, 102);
 
 a {
   color: inherit;
 }
 
 body {
-  background-color: rgb(46, 39, 39);
+  background-color: $background;
   padding: 0;
   margin: 0;
   min-height: 100vh;
@@ -43,14 +45,24 @@ body {
 
   .nav-item {
     margin: 0 1em;
-    font-family: 'Cinzel', serif;
-    border: 4px double $border-color;
-    border-radius: 20px;
-    background-color: black;
+  }
+}
 
-    &:hover {
-      background-color: rgb(44, 44, 44);
-    }
+.btn {
+  font-family: 'Cinzel', serif;
+  border: 4px double $border-color !important;
+  border-radius: 20px;
+  background-color: black;
+  color: $textarea-color;
+
+  &:hover {
+    background-color: rgb(44, 44, 44);
+    border: 4px double $border-color !important;
+    color: $textarea-color;
+  }
+
+  &:focus {
+    box-shadow: $light-brown 0px 0px 8px 0px;
   }
 }
 
@@ -68,7 +80,9 @@ body {
   height: 100%;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   font-family: 'Cinzel', serif;
 }
 
@@ -79,25 +93,28 @@ h1 {
   border: 2px solid $border-color;
   padding: 5px;
   background-color: $textarea-color;
+
+  .inner-container {
+    padding: 2rem;
+  }
 }
 
 .profile-pic {
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
-  margin: 1em auto;
+  width: 200px;
+  height: 200px;
+  border: 4px double $border-color;
+  margin: 0 auto 2rem auto;
 }
 
 .characterEditor {
   width: 400px;
   height: 600px;
-  border: 1px solid black;
+  border: 4px double $border-color;
   position: relative;
+  background-color: white;
 
   div {
     position: absolute;
-    border: 1px solid black;
-    font-size: 3em;
     background-color: transparent !important;
 
     img {

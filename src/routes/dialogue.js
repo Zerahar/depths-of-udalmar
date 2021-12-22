@@ -26,7 +26,7 @@ export default function Dialogue() {
             <h1>{chapter}</h1>
             <div className="dialogue-container" style={{ backgroundImage: `url(${placeholder})` }}>
                 <div className="dialogue-content"> <p dangerouslySetInnerHTML={{ __html: text }}></p>
-                    <Link class="btn btn-next" to={`/story/${nextType}/${nextTextId}`}>&rarr;</Link>
+                    <Link class="btn btn-next" to={`/story/${nextType}/${nextTextId}`}> 	<i class="fas fa-arrow-right"></i></Link>
                 </div></div>
         </main>
     );
