@@ -127,7 +127,7 @@ export default function CharacterCreation() {
                         <option>Zealot</option>
                         <option>Artisan</option>
                     </select>
-                    <p>{classDescription}</p>
+                    <p class="text-box">{classDescription}</p>
                     <h4>Clan</h4>
                     <select onChange={e => { setPlayerClan(e.target.value) }}>
                         <option>Clan Wulfhammer</option>
@@ -136,7 +136,7 @@ export default function CharacterCreation() {
                         <option>Clan Alehart</option>
                         <option>Clan Surtusson</option>
                     </select>
-                    <p>{clanDescription}</p>
+                    <p class="text-box">{clanDescription}</p>
                 </Col><Col>
                     <div className="characterEditor">
                         <div id="base"><img src={body} alt="" /></div>
@@ -146,9 +146,10 @@ export default function CharacterCreation() {
                         {/* <div id="clothing"><img src={clothing_img} alt="clothes" /></div> */}
 
                     </div>
-
+                    <br />
+                    <p>Amongst those whose gazes has never dwelt upon the might of the dwarven city of Udalmar, there’s an old joke: there are no dwarven women. There is some truth in this statement, offensive joke or not: the dwarven folk is a folk of certain uniformity. The dwarves go about their lives, build their fortune and their clans, and raise their families in similar manner as most of the other species inhabiting the world outside the cavernous halls of Udalmar – that is true. Yet, a beard is certainly a source of pride and even a centerpiece of fashion movements amongst all the dwarves, gender notwithstanding. Same truth can be said about ringmail, axes and hammers, cold stones and shining metals – a dwarven eye commonly finds these concepts alluring, no matter the clan, no matter the uprising.</p>
                 </Col>
-                <p>Amongst those whose gazes has never dwelt upon the might of the dwarven city of Udalmar, there’s an old joke: there are no dwarven women. There is some truth in this statement, offensive joke or not: the dwarven folk is a folk of certain uniformity. The dwarves go about their lives, build their fortune and their clans, and raise their families in similar manner as most of the other species inhabiting the world outside the cavernous halls of Udalmar – that is true. Yet, a beard is certainly a source of pride and even a centerpiece of fashion movements amongst all the dwarves, gender notwithstanding. Same truth can be said about ringmail, axes and hammers, cold stones and shining metals – a dwarven eye commonly finds these concepts alluring, no matter the clan, no matter the uprising.</p>
+
             </Row>
 
 
