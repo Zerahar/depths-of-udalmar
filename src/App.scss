@@ -3,6 +3,8 @@ $border-color: rgb(167, 144, 16);
 $textarea-color: #eee2d8;
 $background: rgb(46, 39, 39);
 $light-brown: rgb(119, 102, 102);
+$textbox-bg: rgb(46, 39, 39);
+$red: rgb(148, 0, 0);
 
 a {
   color: inherit;
@@ -179,4 +181,11 @@ h4 {
 select {
   border: 4px double $border-color;
   width: 100%;
+}
+
+.text-box {
+  border: 4px double $background;
+  background-color: #b3a970;
+  padding: 1rem;
+  margin-top: 1rem;
 }
