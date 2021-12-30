@@ -15,12 +15,13 @@ export default function Dialogue() {
             .then(data => data.json())
             .then(res => {
                 setText(res.text)
+                setTextId(params.dialogueId)
                 setChapter(res.chapter)
                 setNextTextId(res.next_id)
                 setNextType(res.next_type)
             })
 
-    });
+    }, [params.dialogueId, textId]);
     return (
         <main>
             <h1>{chapter}</h1>
