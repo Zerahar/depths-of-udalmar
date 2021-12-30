@@ -51,6 +51,29 @@ MongoClient.connect(url, function (err, db) {
             db.close
         })
     })
+    // Get a choice
+    app.get('/choice/:choiceId', (req, res) => {
+        const query = { choice_id: parseInt(req.params.choiceId) }
+        dbo.collection('choices').findOne(query, function (err, result) {
+            if (err) throw err
+            res.send(result)
+            console.log("Fetched choice ", req.params.choiceId)
+            console.log(result)
+            db.close
+        })
+    })
+    // Save a choice that has been made
+    app.post('/choice/:userId', (req, res) => {
+        const query = { user_id: parseInt(req.params.userId) }
+        const update = { $push: { choices: { choice: req.body.choiceId, selected: req.body.optionId } } }
+        dbo.collection('users').updateOne(query, update, function (err, result) {
+            if (err) throw err
+            res.send(result)
+            console.log("Updated user ", req.params.userId)
+            console.log(result)
+            db.close
+        })
+    })
 });
 // error handling middleware
 app.use(function (err, req, res, next) {

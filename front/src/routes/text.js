@@ -20,7 +20,7 @@ export default function Text() {
                 setNextType(res.next_type)
             })
 
-    });
+    }, [params.textId, textId]);
 
     return (
         <main>
