@@ -4,6 +4,7 @@ import header_bg from "./img/header_bg.jpg"
 import player_img from "./img/player_placeholder.jpg"
 
 export default function App() {
+  const loggedIn = false
   return (
     <Container className="full-container" fluid>
       <Navbar className="mb-5" id="title-bar" style={{ backgroundImage: `url(${header_bg})` }}>
@@ -16,12 +17,13 @@ export default function App() {
       </Navbar>
       <Container fluid="lg">
         <Row>
-          <Col lg="3" className="sidebar">
-            <div class="inner-container">
-              <img src={player_img} alt="" className="profile-pic" />
-              <h3>Matthias Ironbeard</h3>
-            </div>
-          </Col>
+          {loggedIn ?
+            <Col lg="3" className="sidebar">
+              <div class="inner-container">
+                <img src={player_img} alt="" className="profile-pic" />
+                <h3>Matthias Ironbeard</h3>
+              </div>
+            </Col> : ""}
           <Col className="text-container">
             <div class="inner-container">
               <Outlet />

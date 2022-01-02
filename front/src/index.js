@@ -11,6 +11,7 @@ import Dialogue from "./routes/dialogue"
 import Text from "./routes/text"
 import Map from "./routes/map"
 import Choice from "./routes/choice"
+import Login from "./routes/login"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.scss"
 
@@ -20,6 +21,7 @@ render(
     <Routes>
       <Route path="/" element={<App />} >
         <Route path="/front" element={<Front />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/characterCreation" element={<CharacterCreation />} />
         <Route path="/story">
           <Route path="/story/dialogue" element={<Dialogue />} >
