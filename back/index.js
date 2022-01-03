@@ -74,6 +74,33 @@ MongoClient.connect(url, function (err, db) {
             db.close
         })
     })
+    // Add a new user
+    app.post('/user', (req, res) => {
+        dbo.collection('users').insertOne(req.body, function (err, result) {
+            if (err) throw err
+            res.send(result.insertedId)
+            console.log("Added user ", req.body.username)
+            db.close
+        })
+    })
+    // Login
+    app.post('/login', (req, res) => {
+        const query = { username: req.body.username, password: req.body.password }
+        dbo.collection('users').findOne(query, function (err, result) {
+            if (err) throw err
+            if (result) {
+                res.status(200)
+                console.log("Logged in as " + req.body.username)
+
+            }
+            else {
+                res.status(404)
+                console.log("Failed login")
+
+            } res.send()
+            db.close
+        })
+    })
 });
 // error handling middleware
 app.use(function (err, req, res, next) {

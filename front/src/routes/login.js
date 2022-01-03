@@ -1,19 +1,61 @@
-import { Form, Button, FloatingLabel, Row, Col } from "react-bootstrap"
-import { useState } from "react"
+import { Form, Spinner, FloatingLabel, Row, Col } from "react-bootstrap"
+import { useEffect, useState } from "react"
 export default function Login() {
     const [loginUserName, setLoginUserName] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     const [regUserName, setRegUserName] = useState("")
     const [regPassword, setRegPassword] = useState("")
     const [regEmail, setRegEmail] = useState("")
+    const [loginProgress, setLoginProgress] = useState(false)
+    const [registerProgress, setRegisterProgress] = useState(false)
     const login = (e) => {
+        setLoginProgress(true)
         e.preventDefault()
-        console.log("Login")
 
+        console.log("Trying to log in")
+        if (loginUserName.length > 4 && loginPassword.length > 4) {
+            fetch("http://localhost:8080/login/", {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "username": loginUserName,
+                    "password": loginPassword
+                })
+            })
+                .then(res => res.status === 200 ? console.log("logged in") : console.log("failed"))
+                .then(setLoginProgress(false))
+
+        } else {
+            alert("Check the input")
+        }
     }
     const register = (e) => {
+        setRegisterProgress(true)
         e.preventDefault()
+
         console.log("register")
+        if (regUserName.length > 4 && regPassword.length > 4 && regEmail.includes("@")) {
+            fetch("http://localhost:8080/user/", {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "username": regUserName,
+                    "password": regPassword,
+                    "email": regEmail
+                })
+            })
+                .then(res => res.text())
+                .then(data => console.log(data))
+                .then(setRegisterProgress(false))
+        } else {
+            alert("Check the input")
+        }
     }
     return (
         <main>
@@ -32,7 +74,16 @@ export default function Login() {
                             </FloatingLabel>
                         </Form.Group>
 
-                        <button className="btn w-100" type="submit">Login</button>
+                        <button className="btn w-100" type="submit">
+                            {loginProgress ?
+                                <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                /> : null}
+                            Login</button>
                     </Form>
                 </Col><Col className="ps-5">
                     <h1>Register</h1>
@@ -56,7 +107,15 @@ export default function Login() {
 
                         </Form.Group>
 
-                        <button className=" btn w-100" type="submit">Register</button>
+                        <button className=" btn w-100" type="submit">
+                            {registerProgress ? <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                            /> : null}
+                            Register</button>
                     </Form>
                 </Col></Row>
         </main>

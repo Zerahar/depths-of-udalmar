@@ -49,7 +49,7 @@ export default function Map() {
     }, [params.mapId, mapId]);
     return (
         <main>
-            <h1>The Map of Uldamar</h1>
+            <h1>The Map of Udalmar</h1>
             <div class="map-container" style={{ backgroundImage: `url(${map_img})` }}>
                 {klofdheim && MapItem("klofdheim", klofdheimDescription, nextId, nextType, navigate)}
                 {candlehold && MapItem("candlehold", candleholdDescription, nextId, nextType, navigate)}
